@@ -29,7 +29,7 @@ function Waitlist() {
   return (
     <PageShell>
       <section className="relative mx-auto max-w-3xl px-6 pt-24 pb-12 text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs text-muted-foreground">
+        <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/[0.04] px-4 py-1.5 text-xs text-muted-foreground">
           <Sparkles className="h-3 w-3 text-[var(--glow)]" /> Limited spots — closing at 500
         </div>
         <h1 className="mt-6 text-5xl font-bold text-gradient sm:text-7xl">Be first in.</h1>
@@ -38,14 +38,14 @@ function Waitlist() {
         </p>
 
         {/* Counter */}
-        <div className="mx-auto mt-10 inline-flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-6 py-4 backdrop-blur">
+        <div className="mx-auto mt-10 inline-flex items-center gap-4 rounded-2xl border border-black/10 bg-black/[0.04] px-6 py-4 backdrop-blur">
           <div>
             <div className="text-xs text-muted-foreground">Currently on waitlist</div>
             <div className="font-display text-3xl font-bold text-gradient">
               {(2847).toLocaleString()}
             </div>
           </div>
-          <div className="h-10 w-px bg-white/10" />
+          <div className="h-10 w-px bg-black/10" />
           <div>
             <div className="text-xs text-muted-foreground">Spots remaining</div>
             <div className="font-display text-3xl font-bold">153</div>
@@ -70,7 +70,7 @@ function Waitlist() {
               <input
                 type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@grinding.dev"
-                className="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm placeholder:text-muted-foreground/60 focus:border-[var(--glow)] focus:outline-none focus:ring-2 focus:ring-[var(--glow)]/30"
+                className="min-w-0 flex-1 rounded-xl border border-black/10 bg-black/[0.04] px-4 py-3 text-sm placeholder:text-muted-foreground/60 focus:border-[var(--glow)] focus:outline-none focus:ring-2 focus:ring-[var(--glow)]/30"
               />
               <button type="submit" className="btn-primary shrink-0">
                 Join waitlist <ArrowRight className="h-4 w-4" />
@@ -86,12 +86,12 @@ function Waitlist() {
         <p className="mt-2 text-center text-sm text-muted-foreground">The roadmap. Built in the open.</p>
 
         <div className="relative mt-12 ml-3">
-          <div className="absolute left-3 top-2 bottom-2 w-px bg-gradient-to-b from-[var(--glow)]/60 via-white/10 to-transparent" />
+          <div className="absolute left-3 top-2 bottom-2 w-px bg-gradient-to-b from-[var(--glow)]/60 via-black/10 to-transparent" />
           {timeline.map((t) => (
             <div key={t.date} className="relative mb-8 pl-12">
               <div className={`absolute left-0 top-1 grid h-6 w-6 place-items-center rounded-full ${
                 t.status === "now" ? "bg-[var(--glow)] text-background animate-pulse-glow" :
-                t.status === "next" ? "bg-[var(--glow-2)]/30 text-[var(--glow-2)]" : "bg-white/5 text-muted-foreground"
+                t.status === "next" ? "bg-[var(--glow-2)]/30 text-[var(--glow-2)]" : "bg-black/[0.04] text-muted-foreground"
               }`}>
                 <Circle className="h-2.5 w-2.5 fill-current" />
               </div>
