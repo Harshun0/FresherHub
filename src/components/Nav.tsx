@@ -14,9 +14,11 @@ export function Nav() {
       <div className="mx-auto mt-4 max-w-6xl px-4">
         <nav className="glass flex items-center justify-between rounded-2xl px-4 py-3">
           <Link to="/" className="flex items-center gap-2 font-display font-semibold">
-            <span className="relative grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-[var(--glow)] to-[var(--glow-2)] text-background">
-              <Sparkles className="h-4 w-4" />
-            </span>
+            <img
+              src="https://res.cloudinary.com/drvug594q/image/upload/v1781556234/instead_of_black_person_use_202606160213-removebg-preview_vq42ec.png"
+              alt="Fresher Hub logo"
+              className="h-8 w-8 shrink-0 rounded-lg object-cover"
+            />
             <span className="text-base">Fresher Hub</span>
           </Link>
           <div className="hidden items-center gap-1 md:flex">
@@ -46,9 +48,11 @@ export function Footer() {
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <div>
             <div className="flex items-center gap-2 font-display font-semibold">
-              <span className="grid h-7 w-7 place-items-center rounded-md bg-gradient-to-br from-[var(--glow)] to-[var(--glow-2)] text-background">
-                <Sparkles className="h-3.5 w-3.5" />
-              </span>
+              <img
+                src="https://res.cloudinary.com/drvug594q/image/upload/v1781556234/instead_of_black_person_use_202606160213-removebg-preview_vq42ec.png"
+                alt="Fresher Hub logo"
+                className="h-7 w-7 rounded-md object-cover"
+              />
               Fresher Hub
             </div>
             <p className="mt-3 max-w-md text-sm text-muted-foreground italic">
