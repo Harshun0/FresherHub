@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
+import { joinWaitlist } from "@/lib/api/waitlist.functions";
 import {
   ArrowRight, Heart, Flame, MessageSquare, Moon, ShieldAlert, Users,
   Sparkles, Quote,
@@ -35,6 +36,27 @@ const testimonials = [
 
 function Index() {
   const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email || loading) return;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      await joinWaitlist({ data: { email, source: "home" } });
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <PageShell>
       {/* HERO */}
@@ -58,23 +80,33 @@ function Index() {
         </p>
 
         <form
-          onSubmit={(e) => { e.preventDefault(); }}
+          onSubmit={handleSubmit}
           className="relative mx-auto mt-10 flex max-w-md flex-col gap-3 sm:flex-row"
         >
-          <input
-            type="email"
-            required
-            placeholder="you@grinding.dev"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="input-base !rounded-full !px-5 !py-3"
-          />
-          <button type="submit" className="btn-primary shrink-0">
-            Drop your email <ArrowRight className="h-4 w-4" />
-          </button>
-          <span className="handwritten absolute -bottom-8 left-2 rotate-[-4deg] text-xl text-[var(--amber)] sm:-bottom-10 sm:left-6 sm:text-2xl">
-            psst — I read every one ↑
-          </span>
+          {submitted ? (
+            <p className="mx-auto text-sm text-[var(--glow)]">You're on the list — check your inbox soon.</p>
+          ) : (
+            <>
+              <input
+                type="email"
+                required
+                disabled={loading}
+                placeholder="you@grinding.dev"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="input-base !rounded-full !px-5 !py-3 disabled:opacity-60"
+              />
+              <button type="submit" disabled={loading} className="btn-primary shrink-0 disabled:opacity-60">
+                {loading ? "Saving..." : "Drop your email"} <ArrowRight className="h-4 w-4" />
+              </button>
+              {error && <p className="text-sm text-red-400 sm:basis-full">{error}</p>}
+            </>
+          )}
+          {!submitted && (
+            <span className="handwritten absolute -bottom-8 left-2 rotate-[-4deg] text-xl text-[var(--amber)] sm:-bottom-10 sm:left-6 sm:text-2xl">
+              psst — I read every one ↑
+            </span>
+          )}
         </form>
         <p className="mt-12 text-xs text-muted-foreground">I'll add you personally. No spam, promise.</p>
       </section>

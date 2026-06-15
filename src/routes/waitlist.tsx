@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
+import { joinWaitlist } from "@/lib/api/waitlist.functions";
 import { useState } from "react";
 import { ArrowRight, Check, Circle, Sparkles } from "lucide-react";
 
@@ -25,6 +26,25 @@ const timeline = [
 function Waitlist() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email || loading) return;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      await joinWaitlist({ data: { email, source: "waitlist" } });
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <PageShell>
@@ -63,18 +83,20 @@ function Waitlist() {
               <p className="mt-2 text-sm text-muted-foreground">I'll DM you the invite within 48 hours. Check your inbox.</p>
             </div>
           ) : (
-            <form
-              onSubmit={(e) => { e.preventDefault(); if (email) setSubmitted(true); }}
-              className="flex flex-col gap-3 sm:flex-row"
-            >
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
               <input
-                type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                required
+                disabled={loading}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@grinding.dev"
-                className="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm placeholder:text-muted-foreground/60 focus:border-[var(--glow)] focus:outline-none focus:ring-2 focus:ring-[var(--glow)]/30"
+                className="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm placeholder:text-muted-foreground/60 focus:border-[var(--glow)] focus:outline-none focus:ring-2 focus:ring-[var(--glow)]/30 disabled:opacity-60"
               />
-              <button type="submit" className="btn-primary shrink-0">
-                Join waitlist <ArrowRight className="h-4 w-4" />
+              <button type="submit" disabled={loading} className="btn-primary shrink-0 disabled:opacity-60">
+                {loading ? "Joining..." : "Join waitlist"} <ArrowRight className="h-4 w-4" />
               </button>
+              {error && <p className="text-sm text-red-400 sm:basis-full">{error}</p>}
             </form>
           )}
         </div>
