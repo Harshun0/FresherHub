@@ -32,79 +32,94 @@
   --color-ring: var(--ring);
   --color-glow: var(--glow);
   --color-glow-2: var(--glow-2);
-  --font-display: "Space Grotesk", sans-serif;
-  --font-sans: "Inter", sans-serif;
+  --font-display: "Instrument Serif", "Times New Roman", serif;
+  --font-sans: "Work Sans", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
+/* Paper & Ink — editorial, premium, calm */
 :root {
-  --radius: 0.875rem;
-  --background: oklch(0.14 0.02 270);
-  --foreground: oklch(0.98 0.005 270);
-  --card: oklch(0.18 0.025 270);
-  --card-foreground: oklch(0.98 0.005 270);
-  --popover: oklch(0.18 0.025 270);
-  --popover-foreground: oklch(0.98 0.005 270);
-  --primary: oklch(0.72 0.18 295);
-  --primary-foreground: oklch(0.14 0.02 270);
-  --secondary: oklch(0.24 0.03 270);
-  --secondary-foreground: oklch(0.98 0.005 270);
-  --muted: oklch(0.22 0.025 270);
-  --muted-foreground: oklch(0.68 0.03 270);
-  --accent: oklch(0.75 0.16 200);
-  --accent-foreground: oklch(0.14 0.02 270);
-  --destructive: oklch(0.65 0.24 25);
-  --destructive-foreground: oklch(0.98 0.005 270);
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 10%);
-  --ring: oklch(0.72 0.18 295);
-  --glow: oklch(0.72 0.22 295);
-  --glow-2: oklch(0.75 0.18 200);
-}
+  --radius: 0.75rem;
+  --paper: #f5f3ee;
+  --paper-2: #efece4;
+  --paper-3: #e8e4dd;
+  --ink: #111110;
+  --ink-2: #2a2826;
+  --ink-3: #5b574f;
+  --ink-4: #8a857a;
+  --accent-ink: #a8421c;   /* burnt sienna for editorial accent */
+  --accent-soft: #e8c97a;  /* warm gold */
 
-.dark {
-  --background: oklch(0.14 0.02 270);
-  --foreground: oklch(0.98 0.005 270);
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: #ffffff;
+  --card-foreground: var(--ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --secondary: var(--paper-3);
+  --secondary-foreground: var(--ink);
+  --muted: var(--paper-2);
+  --muted-foreground: var(--ink-3);
+  --accent: var(--accent-ink);
+  --accent-foreground: var(--paper);
+  --destructive: #b3361b;
+  --destructive-foreground: #fff;
+  --border: rgba(17, 17, 16, 0.10);
+  --input: rgba(17, 17, 16, 0.14);
+  --ring: var(--ink);
+
+  /* legacy aliases used across pages — repurposed for the new palette */
+  --glow: var(--accent-ink);
+  --glow-2: var(--ink-2);
 }
 
 @layer base {
   * { border-color: var(--color-border); }
-  html { font-family: var(--font-sans); }
+  html { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     background-image:
-      radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in oklab, var(--glow) 18%, transparent), transparent 60%),
-      radial-gradient(ellipse 60% 50% at 100% 100%, color-mix(in oklab, var(--glow-2) 10%, transparent), transparent 60%);
+      radial-gradient(ellipse 60% 40% at 50% -10%, rgba(168,66,28,0.06), transparent 70%),
+      radial-gradient(ellipse 50% 40% at 100% 100%, rgba(232,201,122,0.10), transparent 70%);
     background-attachment: fixed;
+    font-feature-settings: "ss01", "cv11";
   }
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+    font-weight: 400;
+  }
+  ::selection { background: var(--ink); color: var(--paper); }
 }
 
+/* Card surfaces — hairline borders, paper, no blur */
 @utility glass {
-  background: color-mix(in oklab, var(--card) 60%, transparent);
-  backdrop-filter: blur(20px) saturate(140%);
-  border: 1px solid color-mix(in oklab, white 8%, transparent);
+  background: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 0 rgba(17,17,16,0.02);
 }
 
 @utility glass-strong {
-  background: color-mix(in oklab, var(--card) 85%, transparent);
-  backdrop-filter: blur(24px) saturate(150%);
-  border: 1px solid color-mix(in oklab, white 10%, transparent);
+  background: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 2px rgba(17,17,16,0.04), 0 12px 40px -24px rgba(17,17,16,0.18);
 }
 
+/* Headline treatment — solid ink with a subtle italic accent allowed via <em> */
 @utility text-gradient {
-  background: linear-gradient(135deg, oklch(0.98 0.005 270), color-mix(in oklab, var(--glow) 80%, white));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--ink);
+}
+.text-gradient em, .text-gradient i {
+  font-style: italic;
+  color: var(--accent-ink);
+  font-family: var(--font-display);
 }
 
 @utility glow-ring {
-  box-shadow:
-    0 0 0 1px color-mix(in oklab, var(--glow) 30%, transparent),
-    0 20px 60px -20px color-mix(in oklab, var(--glow) 50%, transparent),
-    0 0 40px -10px color-mix(in oklab, var(--glow) 40%, transparent);
+  box-shadow: 0 1px 0 var(--ink), 0 20px 60px -20px rgba(17,17,16,0.25);
 }
 
 @utility btn-primary {
@@ -112,17 +127,20 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
-  border-radius: var(--radius);
-  font-weight: 600;
-  font-size: 0.95rem;
-  background: linear-gradient(135deg, var(--glow), var(--glow-2));
-  color: oklch(0.14 0.02 270);
-  transition: all 0.25s ease;
-  box-shadow: 0 10px 30px -10px color-mix(in oklab, var(--glow) 60%, transparent);
+  padding: 0.8rem 1.35rem;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  letter-spacing: -0.005em;
+  background: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--ink);
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 6px 18px -10px rgba(17,17,16,0.6);
   &:hover {
+    background: #000;
     transform: translateY(-1px);
-    box-shadow: 0 18px 40px -10px color-mix(in oklab, var(--glow) 70%, transparent);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 28px -12px rgba(17,17,16,0.55);
   }
 }
 
@@ -131,56 +149,71 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
-  border-radius: var(--radius);
+  padding: 0.8rem 1.35rem;
+  border-radius: 999px;
   font-weight: 500;
-  font-size: 0.95rem;
-  border: 1px solid color-mix(in oklab, white 12%, transparent);
-  background: color-mix(in oklab, white 3%, transparent);
-  color: var(--foreground);
-  transition: all 0.25s ease;
+  font-size: 0.92rem;
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  transition: all 0.2s ease;
   &:hover {
-    background: color-mix(in oklab, white 6%, transparent);
-    border-color: color-mix(in oklab, var(--glow) 40%, transparent);
+    background: var(--ink);
+    color: var(--paper);
   }
 }
 
+/* Subtle paper grid — only just visible */
 @utility grid-bg {
   background-image:
-    linear-gradient(color-mix(in oklab, white 4%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in oklab, white 4%, transparent) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(rgba(17,17,16,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17,17,16,0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 30%, transparent 80%);
 }
 
 @keyframes float-up {
-  0% { transform: translateY(20px); opacity: 0; }
+  0% { transform: translateY(14px); opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
 }
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
+  0%, 100% { opacity: 0.85; transform: scale(1); }
   50% { opacity: 1; transform: scale(1.05); }
 }
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
 
-@utility animate-float-up { animation: float-up 0.7s ease-out both; }
+@utility animate-float-up { animation: float-up 0.7s cubic-bezier(.2,.7,.2,1) both; }
 @utility animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
 
 @utility input-base {
   width: 100%;
-  border-radius: 0.75rem;
-  border: 1px solid color-mix(in oklab, white 10%, transparent);
-  background: color-mix(in oklab, white 3%, transparent);
-  padding: 0.65rem 0.85rem;
-  font-size: 0.9rem;
-  color: var(--foreground);
+  border-radius: 0.6rem;
+  border: 1px solid var(--input);
+  background: #fff;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.92rem;
+  color: var(--ink);
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow .2s;
+  &::placeholder { color: var(--ink-4); }
   &:focus {
-    border-color: var(--glow);
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--glow) 25%, transparent);
+    border-color: var(--ink);
+    box-shadow: 0 0 0 3px rgba(17,17,16,0.08);
   }
+}
+
+/* Editorial helpers */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+@utility hairline { border-top: 1px solid var(--border); }
+
+@utility serif-italic {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--accent-ink);
 }

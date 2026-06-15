@@ -24,8 +24,8 @@ export function Nav() {
               <Link
                 key={l.to}
                 to={l.to}
-                className="rounded-lg px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
-                activeProps={{ className: "rounded-lg px-3 py-1.5 text-sm text-foreground bg-white/5" }}
+                className="rounded-lg px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-black/[0.04] hover:text-foreground"
+                activeProps={{ className: "rounded-lg px-3 py-1.5 text-sm text-foreground bg-black/[0.04]" }}
                 activeOptions={{ exact: l.to === "/" }}
               >
                 {l.label}
@@ -41,7 +41,7 @@ export function Nav() {
 
 export function Footer() {
   return (
-    <footer className="mt-32 border-t border-white/5">
+    <footer className="mt-32 border-t border-black/[0.04]">
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <div>
