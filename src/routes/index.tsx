@@ -39,24 +39,27 @@ function Index() {
     <PageShell>
       {/* HERO */}
       <section className="relative mx-auto max-w-6xl px-6 pt-24 pb-20 text-center">
-        <div className="inline-flex animate-float-up items-center gap-2 rounded-full border border-black/10 bg-black/[0.04] px-4 py-1.5 text-xs text-muted-foreground backdrop-blur">
+        <div className="inline-flex animate-float-up items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs text-muted-foreground backdrop-blur">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--glow)] opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--glow)]" />
           </span>
           Now welcoming the class of '25 & '26
         </div>
-        <h1 className="mt-8 animate-float-up text-5xl leading-[1.02] text-gradient sm:text-6xl md:text-7xl">
-          You're <em>not alone</em> <br className="hidden sm:block" /> in this grind.
+        <h1 className="relative mt-8 animate-float-up text-5xl leading-[1.02] text-gradient sm:text-6xl md:text-7xl">
+          You're <span className="scribble-underline"><em>not alone</em></span> <br className="hidden sm:block" /> in this grind.
+          <span className="handwritten absolute -right-2 top-0 hidden rotate-[8deg] text-2xl text-[var(--amber)] sm:block md:-right-10 md:text-3xl">
+            ← finally, real ones
+          </span>
         </h1>
-        <p className="mx-auto mt-6 max-w-xl animate-float-up text-base text-muted-foreground sm:text-lg">
+        <p className="mx-auto mt-7 max-w-xl animate-float-up text-base text-muted-foreground sm:text-lg">
           A private community for freshers and early-career devs — referrals, roasts,
-          rejection therapy, and real collabs. No gatekeeping. No LinkedIn cringe.
+          rejection therapy, and real collabs. <span className="text-foreground/90">No gatekeeping. No LinkedIn cringe.</span>
         </p>
 
         <form
           onSubmit={(e) => { e.preventDefault(); }}
-          className="mx-auto mt-10 flex max-w-md flex-col gap-3 sm:flex-row"
+          className="relative mx-auto mt-10 flex max-w-md flex-col gap-3 sm:flex-row"
         >
           <input
             type="email"
@@ -64,19 +67,22 @@ function Index() {
             placeholder="you@grinding.dev"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="min-w-0 flex-1 rounded-full border border-black/15 bg-white px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-foreground focus:outline-none focus:ring-2 focus:ring-foreground/15"
+            className="input-base !rounded-full !px-5 !py-3"
           />
           <button type="submit" className="btn-primary shrink-0">
             Drop your email <ArrowRight className="h-4 w-4" />
           </button>
+          <span className="handwritten absolute -bottom-8 left-2 rotate-[-4deg] text-xl text-[var(--amber)] sm:-bottom-10 sm:left-6 sm:text-2xl">
+            psst — I read every one ↑
+          </span>
         </form>
-        <p className="mt-3 text-xs text-muted-foreground">I'll add you personally. No spam, promise.</p>
+        <p className="mt-12 text-xs text-muted-foreground">I'll add you personally. No spam, promise.</p>
       </section>
 
       {/* FEATURES */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="mb-12 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/[0.04] px-3 py-1 text-xs text-muted-foreground">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-muted-foreground">
             <Sparkles className="h-3 w-3" /> What's inside
           </div>
           <h2 className="mt-4 text-3xl font-bold sm:text-4xl">Built for the chaos of job hunting.</h2>
@@ -116,7 +122,7 @@ function Index() {
             <div key={t.name} className="glass rounded-2xl p-6">
               <Quote className="h-5 w-5 text-[var(--glow)]" />
               <p className="mt-4 text-sm leading-relaxed text-foreground/90">{t.text}</p>
-              <div className="mt-5 flex items-center gap-3 border-t border-black/[0.04] pt-4">
+              <div className="mt-5 flex items-center gap-3 border-t border-white/[0.04] pt-4">
                 <div className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-[var(--glow)]/40 to-[var(--glow-2)]/30 font-display text-sm font-semibold">
                   {t.name[0]}
                 </div>
