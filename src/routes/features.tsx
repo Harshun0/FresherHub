@@ -20,7 +20,7 @@ export const Route = createFileRoute("/features")({
 function SectionHeader({ tag, title, sub }: { tag: string; title: string; sub: string }) {
   return (
     <div className="mb-8">
-      <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/[0.04] px-3 py-1 text-xs text-muted-foreground">{tag}</div>
+      <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-muted-foreground">{tag}</div>
       <h2 className="mt-3 font-display text-2xl font-bold sm:text-3xl">{title}</h2>
       <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{sub}</p>
     </div>
@@ -69,8 +69,8 @@ function Features() {
           {referrals.map((r) => (
             <div key={r.co} className="glass group rounded-2xl p-5 transition hover:-translate-y-1 hover:border-[var(--glow)]/40">
               <div className="flex items-start justify-between">
-                <div className="grid h-10 w-10 place-items-center rounded-lg bg-black/[0.04]"><Building2 className="h-5 w-5 text-[var(--glow-2)]" /></div>
-                <button className="flex items-center gap-1 rounded-full border border-black/10 bg-black/[0.04] px-2.5 py-1 text-xs hover:border-[var(--glow)]/50">
+                <div className="grid h-10 w-10 place-items-center rounded-lg bg-white/[0.04]"><Building2 className="h-5 w-5 text-[var(--glow-2)]" /></div>
+                <button className="flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs hover:border-[var(--glow)]/50">
                   <ArrowUp className="h-3 w-3" /> {r.up}
                 </button>
               </div>
@@ -92,9 +92,9 @@ function Features() {
             <div key={i} className="glass relative rounded-2xl p-6">
               <Flame className="h-5 w-5 text-destructive" />
               <p className="mt-4 text-sm leading-relaxed">{r.txt}</p>
-              <div className="mt-5 flex items-center justify-between border-t border-black/[0.04] pt-4 text-xs text-muted-foreground">
+              <div className="mt-5 flex items-center justify-between border-t border-white/[0.04] pt-4 text-xs text-muted-foreground">
                 <span>Anonymous · 2h ago</span>
-                <span className="rounded-full bg-black/[0.04] px-2.5 py-1">{r.react}</span>
+                <span className="rounded-full bg-white/[0.04] px-2.5 py-1">{r.react}</span>
               </div>
             </div>
           ))}
@@ -105,7 +105,7 @@ function Features() {
       <section className="mx-auto max-w-6xl px-6 py-12">
         <SectionHeader tag="03 — Roast My Resume" title="Get torched by people who'd actually hire you." sub="Weekly threads. Senior devs, recruiters, and savage friends." />
         <div className="glass rounded-2xl p-6">
-          <div className="flex items-center gap-3 border-b border-black/[0.04] pb-4">
+          <div className="flex items-center gap-3 border-b border-white/[0.04] pb-4">
             <MessageSquare className="h-5 w-5 text-[var(--glow)]" />
             <div>
               <div className="font-display font-semibold">Week 14 — June 14 Roast Thread</div>
@@ -118,7 +118,7 @@ function Features() {
               { u: "@senior_rahul", c: "drop the 'team player' line. nobody believes it. show me a PR.", likes: 89 },
               { u: "@hr_meera", c: "i'd interview u just for the meme certifications section. respect.", likes: 56 },
             ].map((c) => (
-              <div key={c.u} className="flex gap-3 rounded-xl border border-black/[0.04] bg-black/[0.03] p-4">
+              <div key={c.u} className="flex gap-3 rounded-xl border border-white/[0.04] bg-white/[0.03] p-4">
                 <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--glow)]/40 to-[var(--glow-2)]/30 text-xs font-semibold">
                   {c.u[1].toUpperCase()}
                 </div>

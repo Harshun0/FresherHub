@@ -39,7 +39,7 @@ function Index() {
     <PageShell>
       {/* HERO */}
       <section className="relative mx-auto max-w-6xl px-6 pt-24 pb-20 text-center">
-        <div className="inline-flex animate-float-up items-center gap-2 rounded-full border border-black/10 bg-black/[0.04] px-4 py-1.5 text-xs text-muted-foreground backdrop-blur">
+        <div className="inline-flex animate-float-up items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs text-muted-foreground backdrop-blur">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--glow)] opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--glow)]" />
@@ -64,7 +64,7 @@ function Index() {
             placeholder="you@grinding.dev"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="min-w-0 flex-1 rounded-full border border-black/15 bg-white px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-foreground focus:outline-none focus:ring-2 focus:ring-foreground/15"
+            className="min-w-0 flex-1 rounded-full border border-white/15 bg-white px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-foreground focus:outline-none focus:ring-2 focus:ring-foreground/15"
           />
           <button type="submit" className="btn-primary shrink-0">
             Drop your email <ArrowRight className="h-4 w-4" />
@@ -76,7 +76,7 @@ function Index() {
       {/* FEATURES */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="mb-12 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/[0.04] px-3 py-1 text-xs text-muted-foreground">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-muted-foreground">
             <Sparkles className="h-3 w-3" /> What's inside
           </div>
           <h2 className="mt-4 text-3xl font-bold sm:text-4xl">Built for the chaos of job hunting.</h2>
@@ -116,7 +116,7 @@ function Index() {
             <div key={t.name} className="glass rounded-2xl p-6">
               <Quote className="h-5 w-5 text-[var(--glow)]" />
               <p className="mt-4 text-sm leading-relaxed text-foreground/90">{t.text}</p>
-              <div className="mt-5 flex items-center gap-3 border-t border-black/[0.04] pt-4">
+              <div className="mt-5 flex items-center gap-3 border-t border-white/[0.04] pt-4">
                 <div className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-[var(--glow)]/40 to-[var(--glow-2)]/30 font-display text-sm font-semibold">
                   {t.name[0]}
                 </div>

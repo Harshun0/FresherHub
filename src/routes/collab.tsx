@@ -49,7 +49,7 @@ function Collab() {
     <PageShell>
       {/* HERO */}
       <section className="relative mx-auto max-w-5xl px-6 pt-20 pb-12 text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/[0.04] px-4 py-1.5 text-xs text-muted-foreground">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs text-muted-foreground">
           <Sparkles className="h-3 w-3 text-[var(--glow)]" /> Flagship feature
         </div>
         <h1 className="mt-6 text-5xl font-bold text-gradient sm:text-7xl">Don't build alone.</h1>
@@ -111,7 +111,7 @@ function Collab() {
               <button
                 key={t}
                 onClick={() => setActive(t)}
-                className={`shrink-0 rounded-full border px-3 py-1.5 text-xs transition ${active === t ? "border-[var(--glow)]/50 bg-[var(--glow)]/15 text-foreground" : "border-black/10 bg-black/[0.04] text-muted-foreground hover:text-foreground"}`}
+                className={`shrink-0 rounded-full border px-3 py-1.5 text-xs transition ${active === t ? "border-[var(--glow)]/50 bg-[var(--glow)]/15 text-foreground" : "border-white/10 bg-white/[0.04] text-muted-foreground hover:text-foreground"}`}
               >{t}</button>
             ))}
           </div>
@@ -122,7 +122,7 @@ function Collab() {
               <div className={`absolute -right-12 -top-12 h-36 w-36 rounded-full bg-gradient-to-br ${p.color} blur-2xl opacity-60 group-hover:opacity-100 transition`} />
               <div className="relative">
                 <div className="flex items-center justify-between">
-                  <span className="rounded-full border border-black/10 bg-black/[0.04] px-2.5 py-1 text-xs">{p.tag}</span>
+                  <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs">{p.tag}</span>
                 </div>
                 <h3 className="mt-4 font-display text-xl font-semibold">{p.name}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{p.desc}</p>
@@ -130,18 +130,18 @@ function Collab() {
                   {p.roles.map((r) => {
                     const Icon = roleIcons[r] ?? Code2;
                     return (
-                      <span key={r} className="inline-flex items-center gap-1 rounded-md bg-black/[0.04] px-2 py-1 text-xs text-muted-foreground">
+                      <span key={r} className="inline-flex items-center gap-1 rounded-md bg-white/[0.04] px-2 py-1 text-xs text-muted-foreground">
                         <Icon className="h-3 w-3" /> {r}
                       </span>
                     );
                   })}
                 </div>
-                <div className="mt-5 flex items-center justify-between border-t border-black/[0.04] pt-4">
+                <div className="mt-5 flex items-center justify-between border-t border-white/[0.04] pt-4">
                   <div className="flex items-center gap-2">
                     <div className="grid h-7 w-7 place-items-center rounded-full bg-gradient-to-br from-[var(--glow)]/40 to-[var(--glow-2)]/30 text-[10px] font-bold">{p.founder[0]}</div>
                     <span className="text-xs text-muted-foreground">{p.founder}</span>
                   </div>
-                  <button className="rounded-lg bg-black/[0.04] px-3 py-1.5 text-xs font-medium transition hover:bg-[var(--glow)]/20 hover:text-[var(--glow)]">Join Project →</button>
+                  <button className="rounded-lg bg-white/[0.04] px-3 py-1.5 text-xs font-medium transition hover:bg-[var(--glow)]/20 hover:text-[var(--glow)]">Join Project →</button>
                 </div>
               </div>
             </div>
@@ -171,7 +171,7 @@ function Collab() {
                 </div>
               </div>
               <div className="mt-4 flex flex-wrap gap-1.5">
-                {m.skills.map((s) => <span key={s} className="rounded-md bg-black/[0.04] px-2 py-0.5 text-xs text-muted-foreground">{s}</span>)}
+                {m.skills.map((s) => <span key={s} className="rounded-md bg-white/[0.04] px-2 py-0.5 text-xs text-muted-foreground">{s}</span>)}
               </div>
               <div className="mt-3 text-xs text-muted-foreground">on <span className="text-foreground">{m.current}</span></div>
             </div>
@@ -184,7 +184,7 @@ function Collab() {
         <div className="glass-strong relative overflow-hidden rounded-3xl p-8">
           <div className="absolute -left-20 -bottom-20 h-60 w-60 rounded-full bg-[var(--glow-2)]/25 blur-3xl" />
           <div className="relative flex items-start gap-4">
-            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-black/[0.04]">
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/[0.04]">
               <Users className="h-5 w-5 text-[var(--glow-2)]" />
             </div>
             <div className="flex-1">
@@ -192,7 +192,7 @@ function Collab() {
               <p className="mt-1 text-sm text-muted-foreground">Match suggestions based on your stack, hours, and project type.</p>
               <div className="mt-5 grid gap-3 sm:grid-cols-3">
                 {["Devansh (React + Figma)", "Priya (Node + Postgres)", "Tara (iOS + design)"].map((s) => (
-                  <div key={s} className="rounded-xl border border-black/[0.04] bg-black/[0.04] p-3 text-sm">
+                  <div key={s} className="rounded-xl border border-white/[0.04] bg-white/[0.04] p-3 text-sm">
                     <div className="text-xs text-[var(--glow)]">98% vibe match</div>
                     <div className="mt-1">{s}</div>
                   </div>
