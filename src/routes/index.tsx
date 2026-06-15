@@ -46,17 +46,20 @@ function Index() {
           </span>
           Now welcoming the class of '25 & '26
         </div>
-        <h1 className="mt-8 animate-float-up text-5xl leading-[1.02] text-gradient sm:text-6xl md:text-7xl">
-          You're <em>not alone</em> <br className="hidden sm:block" /> in this grind.
+        <h1 className="relative mt-8 animate-float-up text-5xl leading-[1.02] text-gradient sm:text-6xl md:text-7xl">
+          You're <span className="scribble-underline"><em>not alone</em></span> <br className="hidden sm:block" /> in this grind.
+          <span className="handwritten absolute -right-2 top-0 hidden rotate-[8deg] text-2xl text-[var(--amber)] sm:block md:-right-10 md:text-3xl">
+            ← finally, real ones
+          </span>
         </h1>
-        <p className="mx-auto mt-6 max-w-xl animate-float-up text-base text-muted-foreground sm:text-lg">
+        <p className="mx-auto mt-7 max-w-xl animate-float-up text-base text-muted-foreground sm:text-lg">
           A private community for freshers and early-career devs — referrals, roasts,
-          rejection therapy, and real collabs. No gatekeeping. No LinkedIn cringe.
+          rejection therapy, and real collabs. <span className="text-foreground/90">No gatekeeping. No LinkedIn cringe.</span>
         </p>
 
         <form
           onSubmit={(e) => { e.preventDefault(); }}
-          className="mx-auto mt-10 flex max-w-md flex-col gap-3 sm:flex-row"
+          className="relative mx-auto mt-10 flex max-w-md flex-col gap-3 sm:flex-row"
         >
           <input
             type="email"
@@ -64,13 +67,16 @@ function Index() {
             placeholder="you@grinding.dev"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="min-w-0 flex-1 rounded-full border border-white/15 bg-white px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-foreground focus:outline-none focus:ring-2 focus:ring-foreground/15"
+            className="input-base !rounded-full !px-5 !py-3"
           />
           <button type="submit" className="btn-primary shrink-0">
             Drop your email <ArrowRight className="h-4 w-4" />
           </button>
+          <span className="handwritten absolute -bottom-8 left-2 rotate-[-4deg] text-xl text-[var(--amber)] sm:-bottom-10 sm:left-6 sm:text-2xl">
+            psst — I read every one ↑
+          </span>
         </form>
-        <p className="mt-3 text-xs text-muted-foreground">I'll add you personally. No spam, promise.</p>
+        <p className="mt-12 text-xs text-muted-foreground">I'll add you personally. No spam, promise.</p>
       </section>
 
       {/* FEATURES */}
