@@ -46,12 +46,12 @@ function Index() {
           </span>
           Now welcoming the class of '25 & '26
         </div>
-        <h1 className="mt-6 animate-float-up text-5xl font-bold leading-[1.05] text-gradient sm:text-6xl md:text-7xl">
-          You're not alone <br className="hidden sm:block" /> in this grind.
+        <h1 className="mt-8 animate-float-up text-5xl leading-[1.02] text-gradient sm:text-6xl md:text-7xl">
+          You're <em>not alone</em> <br className="hidden sm:block" /> in this grind.
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl animate-float-up text-base text-muted-foreground sm:text-lg">
-          Fresher Hub is a private community for freshers and early-career devs navigating the job market —
-          referrals, roasts, rejection therapy, and real collabs. No gatekeeping. No LinkedIn cringe.
+        <p className="mx-auto mt-6 max-w-xl animate-float-up text-base text-muted-foreground sm:text-lg">
+          A private community for freshers and early-career devs — referrals, roasts,
+          rejection therapy, and real collabs. No gatekeeping. No LinkedIn cringe.
         </p>
 
         <form
@@ -64,7 +64,7 @@ function Index() {
             placeholder="you@grinding.dev"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="min-w-0 flex-1 rounded-xl border border-black/10 bg-black/[0.04] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-[var(--glow)] focus:outline-none focus:ring-2 focus:ring-[var(--glow)]/30"
+            className="min-w-0 flex-1 rounded-full border border-black/15 bg-white px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-foreground focus:outline-none focus:ring-2 focus:ring-foreground/15"
           />
           <button type="submit" className="btn-primary shrink-0">
             Drop your email <ArrowRight className="h-4 w-4" />
